@@ -140,7 +140,7 @@ def selecionar_plano() -> str:
         case 4:
             print(f"""
     {linha}==============================
-    ||=================================== | Pedal esencial |   Pedal leve   |   Pedal elite  ||
+    ||=================================== | Pedal essencial |   Pedal leve   |   Pedal elite  ||
     ||                                    |                |                |                ||
     || Reparo de câmaras de ar            |      SIM       |      SIM       |      SIM       ||
     ||                                    |                |                |                ||
