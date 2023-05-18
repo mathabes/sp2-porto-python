@@ -1,14 +1,17 @@
 escolha_menu = 1
 cadastro_realizado = False
 possuir_acess = False
+plano_selecionado = False
 linha = "=" * 61
 tipo_acess = []
 marca_acess = []
 modelo_acess = []
 valor_acess = []
 dados_pessoal_bike = ""
+tipo_plano = ""
 
 
+# SUBALGORITMOS
 def menu() -> int:
     global escolha_menu
     print(f"""
@@ -133,14 +136,29 @@ def selecionar_plano() -> str:
             plano = ""
         case 1:
             plano = "Pedal essencial"
+            print(f"""
+    {linha}
+    ---> Pedal essencial selecionado!!!...
+    {linha}    
+            """)
         case 2:
             plano = "Pedal leve"
+            print(f"""
+    {linha}
+    ---> Pedal leve selecionado!!!...
+    {linha}    
+            """)
         case 3:
             plano = "Pedal elite"
+            print(f"""
+    {linha}
+    ---> Pedal elite selecionado!!!...
+    {linha}    
+            """)
         case 4:
             print(f"""
     {linha}==============================
-    ||=================================== | Pedal essencial |   Pedal leve   |   Pedal elite  ||
+    ||=================================== | Pedal essencial|   Pedal leve   |   Pedal elite  ||
     ||                                    |                |                |                ||
     || Reparo de câmaras de ar            |      SIM       |      SIM       |      SIM       ||
     ||                                    |                |                |                ||
@@ -192,7 +210,11 @@ def selecionar_plano() -> str:
             """)
     return plano
 
+def perguntas() -> None:
+    print()
 
+
+# ALGORITMO PRINCIPAL
 print(f"""
     {linha}
     || Bem-vindo ao programa responsável pela contratação do   ||
@@ -203,10 +225,32 @@ print(f"""
 while escolha_menu != 0:
     match menu():
         case 1:
-            dados_pessoal_bike = cadastro()
-            cadastro_realizado = True
+            if cadastro_realizado:
+                print(f"""
+    {linha}
+    ---> Cadastro já realizado selecionado!!!...
+    {linha}    
+                        """)
+            else:
+                dados_pessoal_bike = cadastro()
+                cadastro_realizado = True
         case 2:
-            selecionar_plano()
+            if not cadastro_realizado:
+                print(f"""
+    {linha}
+    ---> Para selecionar seu plano, precisamos que realize 
+    o cadastro primeiro...
+    {linha}    
+                """)
+            elif plano_selecionado:
+                print(f"""
+    {linha}
+    ---> Plano já selecionado!!!...
+    {linha}    
+                """)
+            else:
+                tipo_plano = selecionar_plano()
+                plano_selecionado = True
         case 3:
             print(f"""
     {linha}
@@ -226,6 +270,8 @@ while escolha_menu != 0:
     EM CONSTRUÇÃO!!!...
     {linha}
             """)
+        case 5:
+            perguntas()
         case 0:
             print(f"""
     {linha}
@@ -251,3 +297,10 @@ if cadastro_realizado:
     || Modelo: {modelo_acess[i]:48}||
     || Valor: R${valor_acess[i]:<47.2f}||""")
         print("   ", linha)
+    if plano_selecionado:
+        print(f"""
+    {linha}
+    ---> {tipo_plano} selecionado!!!...
+    {linha}    
+        """)
+
