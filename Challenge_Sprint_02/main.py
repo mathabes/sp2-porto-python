@@ -225,24 +225,21 @@ def perguntas() -> None:
     ||                   Perguntas Frequentes                  ||
     {linha}
     || 1 --> Quanto custa o seguro de uma bike?                ||
-    || ------------------------------------------------------- ||
-    || 2 --> Qual é o valor da franquia do Seguro Bike         ||
-    || da Porto?                                               ||
     || ------------------------------------------------------- || 
-    || 3 --> O seguro bike tem cobertura para terceiros?       ||
+    || 2 --> O seguro bike tem cobertura para terceiros?       ||
     || ------------------------------------------------------- ||
-    || 4 --> O que devo fazer em uma situação de sinistro/dano ||
+    || 3 --> O que devo fazer em uma situação de sinistro/dano ||
     || no bem coberto pelo seguro?                             ||
     || ------------------------------------------------------- ||
-    || 5 --> O Seguro Bike da Porto oferece cobertura para     ||
+    || 4 --> O Seguro Bike da Porto oferece cobertura para     ||
     || acessórios?                                             ||
     || ------------------------------------------------------- ||
-    || 6 --> O seguro bike oferece cobertura para furto?       ||
+    || 5 --> O seguro bike oferece cobertura para furto?       ||
     || ------------------------------------------------------- ||
-    || 7 --> Qual é o valor mínimo da bicicleta para que eu    ||
+    || 6 --> Qual é o valor mínimo da bicicleta para que eu    ||
     || possa contratar o Seguro Bike da Porto?                 ||
     || ------------------------------------------------------- ||
-    || 8 --> Nenhuma das anteriores.                           ||
+    || 7 --> Nenhuma das anteriores.                           ||
     || ------------------------------------------------------- ||
     || 0 --> Voltar.                                           ||
     {linha}
@@ -253,47 +250,65 @@ def perguntas() -> None:
             case 1:
                 print(f"""
     {linha}
-    ---> Pergunta cadastrada com sucesso!!!...
+    ---> Para calcular o valor, precisamos de alguns dados da 
+    pessoa e da bike. Informações como idade da   bicicleta, 
+    modelo, forma de uso (lazer, esporte, trabalho) são 
+    essenciais para a precificação, por isso, o valor do seguro 
+    varia de acordo com cada perfil e tipo de bike.
     {linha}    
                 """)       
             case 2:
                 print(f"""
     {linha}
-    ---> Pergunta cadastrada com sucesso!!!...
+    ---> Sim, de forma opcional. Chamamos de cobertura de 
+    Responsabilidade Civil, que oferece amparo  para  danos 
+    materiais ou corporais causados a terceiros durante o uso 
+    da bicicleta. Ex.: a bike atingiu uma pessoa ou veículo de 
+    alguém, a cobertura ampara essas situações, desde que a 
+    pessoa atingida não seja alguém da sua família.
     {linha}    
                 """)
             case 3:
                 print(f"""
     {linha}
-    ---> Pergunta cadastrada com sucesso!!!...
+    ---> É importante nos comunicar sobre a ocorrência 
+    imediatamente ou assim que possível. O aviso de sinistro 
+    pode ser feito pelo WhatsApp 11 3003 9303 ou pelo site Porto 
+    Seguro. A partir do aviso, damos início ao processo de análise 
+    e indenização.
     {linha}    
                 """)
             case 4:
                 print(f"""
     {linha}
-    ---> Pergunta cadastrada com sucesso!!!...
+    ---> Tem cobertura: ciclocomputadores, GPS e velocímetros. 
+    Não tem cobertura: acessórios de uso pessoal não acoplados 
+    à bicicleta, como capacetes, luvas, squeezes, mochilas, 
+    roupas e ferramentas.
     {linha}    
                 """)
             case 5:
                 print(f"""
     {linha}
-    ---> Pergunta cadastrada com sucesso!!!...
+    ---> Furtos simples, como o desaparecimento da bicicleta ou 
+    roubo sem vestígios, não são cobertos pelo seguro bike.
     {linha}    
                 """)
             case 6:
                 print(f"""
     {linha}
-    ---> Pergunta cadastrada com sucesso!!!...
+    ---> Você pode contratar o seguro para bicicletas com 
+    valores a partir de R$ 2.000,00
     {linha}    
                 """)
             case 7:
+                pergunta_nova = input("Digite sua pergunta: ")
                 print(f"""
     {linha}
-    ---> Pergunta cadastrada com sucesso!!!...
+    ---> Pergunta cadastrada. Responderemos o mais rápido 
+    possível!!!...
     {linha}    
-                """)
-            case 8:
-                 
+                """)      
             case _:
                 print(f"""
     {linha}
@@ -365,11 +380,29 @@ while escolha_menu != 0:
         case 5:
             perguntas()
         case 0:
-            print(f"""
+            if cadastro_realizado:
+                print(dados_pessoal_bike)
+            if possuir_acess:
+                for i in range(0, len(tipo_acess), 1):
+                    print(f"""
+    {linha}
+    || Acessório {i + 1:<46d}||   
+    || Tipo: {tipo_acess[i]:50}||
+    || Marca: {marca_acess[i]:49}||
+    || Modelo: {modelo_acess[i]:48}||
+    || Valor: R${valor_acess[i]:<47.2f}||""")
+                    print("   ", linha)
+            if plano_selecionado:
+                print(f"""
+    {linha}
+    ---> {tipo_plano} selecionado!!!...
+    {linha}    
+                """)         
+                print(f"""
     {linha}
     ---> FECHANDO O PROGRAMA!!!...
     {linha}
-            """)
+                """)
             break
         case _:
             print(f"""
@@ -377,22 +410,3 @@ while escolha_menu != 0:
     ---> DIGITE UMA OPÇÃO VÁLIDA!!!...
     {linha}    
             """)
-if cadastro_realizado:
-    print(dados_pessoal_bike)
-    if possuir_acess:
-        for i in range(0, len(tipo_acess), 1):
-            print(f"""
-    {linha}
-    || Acessório {i + 1:<46d}||   
-    || Tipo: {tipo_acess[i]:50}||
-    || Marca: {marca_acess[i]:49}||
-    || Modelo: {modelo_acess[i]:48}||
-    || Valor: R${valor_acess[i]:<47.2f}||""")
-        print("   ", linha)
-    if plano_selecionado:
-        print(f"""
-    {linha}
-    ---> {tipo_plano} selecionado!!!...
-    {linha}    
-        """)
-
