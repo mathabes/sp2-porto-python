@@ -47,7 +47,10 @@ def cadastro() -> str:
     while True:
         try:
             valor = float(input("Informe o valor da bike (sem acessórios): "))
-            break
+            if valor > 2000:
+                break
+            else:
+                print("O valor mínimo de uma bike para que seja assegurada é de R$2000.00...
         except ValueError:
             print("Digite um valor válido...")
             continue
@@ -134,6 +137,11 @@ def selecionar_plano() -> str:
     match escolha_plano:
         case 0:
             plano = ""
+            print(f"""
+    {linha}
+    ---> Voltando...
+    {linha}    
+            """)
         case 1:
             plano = "Pedal essencial"
             print(f"""
@@ -211,9 +219,93 @@ def selecionar_plano() -> str:
     return plano
 
 def perguntas() -> None:
-    print()
-
-
+     escolha_pergunta = 1
+     print(f"""
+    {linha}
+    ||                   Perguntas Frequentes                  ||
+    {linha}
+    || 1 --> Quanto custa o seguro de uma bike?                ||
+    || ------------------------------------------------------- ||
+    || 2 --> Qual é o valor da franquia do Seguro Bike         ||
+    || da Porto?                                               ||
+    || ------------------------------------------------------- || 
+    || 3 --> O seguro bike tem cobertura para terceiros?       ||
+    || ------------------------------------------------------- ||
+    || 4 --> O que devo fazer em uma situação de sinistro/dano ||
+    || no bem coberto pelo seguro?                             ||
+    || ------------------------------------------------------- ||
+    || 5 --> O Seguro Bike da Porto oferece cobertura para     ||
+    || acessórios?                                             ||
+    || ------------------------------------------------------- ||
+    || 6 --> O seguro bike oferece cobertura para furto?       ||
+    || ------------------------------------------------------- ||
+    || 7 --> Qual é o valor mínimo da bicicleta para que eu    ||
+    || possa contratar o Seguro Bike da Porto?                 ||
+    || ------------------------------------------------------- ||
+    || 8 --> Nenhuma das anteriores.                           ||
+    || ------------------------------------------------------- ||
+    || 0 --> Voltar.                                           ||
+    {linha}
+    """)
+    escolha_pergunta = int(input("Digite a opção que pode corresponder a sua pergunta: "))
+    while escolha_pergunta != 0:                  
+        match escolha_pergunta:
+            case 1:
+                print(f"""
+    {linha}
+    ---> Pergunta cadastrada com sucesso!!!...
+    {linha}    
+                """)       
+            case 2:
+                print(f"""
+    {linha}
+    ---> Pergunta cadastrada com sucesso!!!...
+    {linha}    
+                """)
+            case 3:
+                print(f"""
+    {linha}
+    ---> Pergunta cadastrada com sucesso!!!...
+    {linha}    
+                """)
+            case 4:
+                print(f"""
+    {linha}
+    ---> Pergunta cadastrada com sucesso!!!...
+    {linha}    
+                """)
+            case 5:
+                print(f"""
+    {linha}
+    ---> Pergunta cadastrada com sucesso!!!...
+    {linha}    
+                """)
+            case 6:
+                print(f"""
+    {linha}
+    ---> Pergunta cadastrada com sucesso!!!...
+    {linha}    
+                """)
+            case 7:
+                print(f"""
+    {linha}
+    ---> Pergunta cadastrada com sucesso!!!...
+    {linha}    
+                """)
+            case 8:
+                 
+            case _:
+                print(f"""
+    {linha}
+    ---> DIGITE UMA OPÇÃO VÁLIDA!!!...
+    {linha}    
+                """)
+    print(f"""
+    {linha}
+    ---> Voltando...
+    {linha}    
+    """)
+                      
 # ALGORITMO PRINCIPAL
 print(f"""
     {linha}
